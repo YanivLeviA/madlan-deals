@@ -1,0 +1,58 @@
+[
+  {
+    "line": 80,
+    "deal_id": "D100317",
+    "reasons": [
+      "implausible_price"
+    ],
+    "raw": {
+      "deal_id": "D100317",
+      "city": "רחובות",
+      "neighborhood": "מרכז ",
+      "street": "דרך השלום",
+      "property_type": "דירה",
+      "rooms": "4.5",
+      "size_sqm": "132",
+      "floor": "4",
+      "total_floors": "4",
+      "year_built": "1978",
+      "condition": "דורש שיפוץ",
+      "has_elevator": "לא",
+      "has_parking": "כן",
+      "has_balcony": "כן",
+      "has_safe_room": "לא",
+      "deal_date": "2025-07-28",
+      "price_nis": "18000",
+      "price_per_sqm": "0",
+      "source": "בעל נכס"
+    }
+  },
+  {
+    "line": 333,
+    "deal_id": "D100251",
+    "reasons": [
+      "implausible_price"
+    ],
+    "raw": {
+      "deal_id": "D100251",
+      "city": "אשדוד",
+      "neighborhood": "מרינה",
+      "street": "הפלמ\"ח",
+      "property_type": "דירה",
+      "rooms": "4",
+      "size_sqm": "114",
+      "floor": "9",
+      "total_floors": "9",
+      "year_built": "2011",
+      "condition": "במצב טוב",
+      "has_elevator": "כן",
+      "has_parking": "כן",
+      "has_balcony": "TRUE",
+      "has_safe_room": "כן",
+      "deal_date": "2024-07-09",
+      "price_nis": "0",
+      "price_per_sqm": "0",
+      "source": "רשות המסים"
+    }
+  }
+]

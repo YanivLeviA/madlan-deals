@@ -1,0 +1,743 @@
+{
+  "generated_at": "2026-11-21T13:57:54.712Z",
+  "input": {
+    "path": "C:\\Files\\Bitbucket\\Madlan\\Data\\Deals_sample.csv",
+    "sha256": "c2828c9e1b31496a6483be68694490b25f48f007e5aa6c32907d4d7bb14fcc09",
+    "bytes": 83261,
+    "encoding": "utf-8",
+    "encoding_detection": "valid UTF-8 (no BOM)",
+    "columns": [
+      "deal_id",
+      "city",
+      "neighborhood",
+      "street",
+      "property_type",
+      "rooms",
+      "size_sqm",
+      "floor",
+      "total_floors",
+      "year_built",
+      "condition",
+      "has_elevator",
+      "has_parking",
+      "has_balcony",
+      "has_safe_room",
+      "deal_date",
+      "price_nis",
+      "price_per_sqm",
+      "source"
+    ],
+    "unexpected_columns": []
+  },
+  "counts": {
+    "csv_data_rows": 530,
+    "rejected_rows": 2,
+    "parsed_ok_before_dedup": 528,
+    "exact_duplicate_rows_removed": 6,
+    "conflicting_duplicate_ids_resolved": 4,
+    "conflicting_duplicate_rows_dropped": 4,
+    "final_clean_records": 518,
+    "final_records_with_at_least_one_flag": 59
+  },
+  "rejected_by_reason": {
+    "implausible_price": 2
+  },
+  "quality_flag_counts": {
+    "deal_date_month_only": 26,
+    "duplicate_id_conflict_resolved": 4,
+    "price_per_sqm_mismatch": 24,
+    "year_built_after_deal": 6,
+    "size_outlier": 2
+  },
+  "null_counts_in_clean_data": {
+    "has_parking": 18,
+    "year_built": 34,
+    "size_sqm": 9,
+    "price_per_sqm": 9,
+    "price_per_sqm_reported": 9,
+    "condition": 15,
+    "condition_he": 15,
+    "floor": 22,
+    "neighborhood": 11
+  },
+  "distributions": {
+    "city": {
+      "חולון": 39,
+      "נתניה": 36,
+      "מודיעין-מכבים-רעות": 34,
+      "פתח תקווה": 33,
+      "כפר סבא": 32,
+      "ראשון לציון": 31,
+      "רעננה": 29,
+      "באר שבע": 29,
+      "רמת גן": 28,
+      "בת ים": 28,
+      "הרצליה": 28,
+      "גבעתיים": 28,
+      "בית שמש": 27,
+      "רחובות": 27,
+      "אשדוד": 24,
+      "תל אביב-יפו": 22,
+      "חיפה": 22,
+      "ירושלים": 21
+    },
+    "property_type": {
+      "apartment": 243,
+      "duplex": 69,
+      "penthouse": 63,
+      "garden_apartment": 61,
+      "roof_apartment": 43,
+      "private_house": 39
+    },
+    "source": {
+      "tax_authority": 301,
+      "broker": 117,
+      "owner": 100
+    },
+    "deal_year": {
+      "2021": 36,
+      "2022": 70,
+      "2023": 84,
+      "2024": 104,
+      "2025": 132,
+      "2026": 92
+    },
+    "deal_date_precision": {
+      "day": 492,
+      "month": 26
+    }
+  },
+  "exact_duplicates": [
+    {
+      "deal_id": "D100311",
+      "lines": [
+        10,
+        385
+      ]
+    },
+    {
+      "deal_id": "D100025",
+      "lines": [
+        63,
+        520
+      ]
+    },
+    {
+      "deal_id": "D100196",
+      "lines": [
+        199,
+        277
+      ]
+    },
+    {
+      "deal_id": "D100099",
+      "lines": [
+        391,
+        463
+      ]
+    },
+    {
+      "deal_id": "D100416",
+      "lines": [
+        441,
+        509
+      ]
+    },
+    {
+      "deal_id": "D100215",
+      "lines": [
+        462,
+        512
+      ]
+    }
+  ],
+  "conflicting_duplicates": [
+    {
+      "deal_id": "D100017",
+      "kept_line": 11,
+      "reason": "price_consistent_with_price_per_sqm",
+      "fields_differing": [
+        "price_nis",
+        "price_per_sqm",
+        "source",
+        "source_he"
+      ],
+      "candidates": [
+        {
+          "line": 11,
+          "source": "tax_authority",
+          "price_nis": 1919000,
+          "price_per_sqm_reported": 15110,
+          "price_per_sqm_consistent": true
+        },
+        {
+          "line": 475,
+          "source": "broker",
+          "price_nis": 1851548,
+          "price_per_sqm_reported": 15110,
+          "price_per_sqm_consistent": false
+        }
+      ]
+    },
+    {
+      "deal_id": "D100124",
+      "kept_line": 375,
+      "reason": "price_consistent_with_price_per_sqm",
+      "fields_differing": [
+        "price_nis",
+        "price_per_sqm",
+        "source",
+        "source_he"
+      ],
+      "candidates": [
+        {
+          "line": 67,
+          "source": "broker",
+          "price_nis": 5429440,
+          "price_per_sqm_reported": 39226,
+          "price_per_sqm_consistent": false
+        },
+        {
+          "line": 375,
+          "source": "tax_authority",
+          "price_nis": 5727000,
+          "price_per_sqm_reported": 39226,
+          "price_per_sqm_consistent": true
+        }
+      ]
+    },
+    {
+      "deal_id": "D100032",
+      "kept_line": 247,
+      "reason": "price_consistent_with_price_per_sqm",
+      "fields_differing": [
+        "price_nis",
+        "price_per_sqm",
+        "source",
+        "source_he"
+      ],
+      "candidates": [
+        {
+          "line": 247,
+          "source": "owner",
+          "price_nis": 5141000,
+          "price_per_sqm_reported": 58420,
+          "price_per_sqm_consistent": true
+        },
+        {
+          "line": 267,
+          "source": "broker",
+          "price_nis": 5343137,
+          "price_per_sqm_reported": 58420,
+          "price_per_sqm_consistent": false
+        }
+      ]
+    },
+    {
+      "deal_id": "D100303",
+      "kept_line": 268,
+      "reason": "price_consistent_with_price_per_sqm",
+      "fields_differing": [
+        "price_nis",
+        "price_per_sqm",
+        "source",
+        "source_he"
+      ],
+      "candidates": [
+        {
+          "line": 268,
+          "source": "owner",
+          "price_nis": 6064000,
+          "price_per_sqm_reported": 45254,
+          "price_per_sqm_consistent": true
+        },
+        {
+          "line": 479,
+          "source": "broker",
+          "price_nis": 6195332,
+          "price_per_sqm_reported": 45254,
+          "price_per_sqm_consistent": false
+        }
+      ]
+    }
+  ],
+  "normalizations": {
+    "city:alias_mapped": {
+      "count": 63,
+      "examples": [
+        {
+          "line": 5,
+          "before": "בית-שמש",
+          "after": "בית שמש"
+        },
+        {
+          "line": 24,
+          "before": "Jerusalem",
+          "after": "ירושלים"
+        },
+        {
+          "line": 39,
+          "before": "מודיעין",
+          "after": "מודיעין-מכבים-רעות"
+        }
+      ]
+    },
+    "city:text_normalized": {
+      "count": 8,
+      "examples": [
+        {
+          "line": 20,
+          "before": "ירושלים ",
+          "after": "ירושלים"
+        },
+        {
+          "line": 33,
+          "before": "ירושלים ",
+          "after": "ירושלים"
+        },
+        {
+          "line": 159,
+          "before": "ירושלים ",
+          "after": "ירושלים"
+        }
+      ]
+    },
+    "condition:blank_to_null": {
+      "count": 16,
+      "examples": [
+        {
+          "line": 21,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 46,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 53,
+          "before": "",
+          "after": "null"
+        }
+      ]
+    },
+    "condition:text_normalized": {
+      "count": 9,
+      "examples": [
+        {
+          "line": 178,
+          "before": "  דורש שיפוץ ",
+          "after": "דורש שיפוץ"
+        },
+        {
+          "line": 241,
+          "before": "משופץ  ",
+          "after": "משופץ"
+        },
+        {
+          "line": 247,
+          "before": "  שמור ",
+          "after": "שמור"
+        }
+      ]
+    },
+    "deal_date:format_day_first": {
+      "count": 131,
+      "examples": [
+        {
+          "line": 9,
+          "before": "17.07.2026",
+          "after": "2026-07-17"
+        },
+        {
+          "line": 11,
+          "before": "15/06/2025",
+          "after": "2025-06-15"
+        },
+        {
+          "line": 12,
+          "before": "08/08/2022",
+          "after": "2022-08-08"
+        }
+      ]
+    },
+    "deal_date:format_month_name": {
+      "count": 26,
+      "examples": [
+        {
+          "line": 19,
+          "before": "Aug 2025",
+          "after": "2025-08-01"
+        },
+        {
+          "line": 29,
+          "before": "Nov 2024",
+          "after": "2024-11-01"
+        },
+        {
+          "line": 51,
+          "before": "Jun 2026",
+          "after": "2026-06-01"
+        }
+      ]
+    },
+    "floor:blank_to_null": {
+      "count": 24,
+      "examples": [
+        {
+          "line": 10,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 17,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 93,
+          "before": "",
+          "after": "null"
+        }
+      ]
+    },
+    "has_balcony:boolean_normalized": {
+      "count": 530,
+      "examples": [
+        {
+          "line": 2,
+          "before": "כן",
+          "after": "true"
+        },
+        {
+          "line": 3,
+          "before": "1",
+          "after": "true"
+        },
+        {
+          "line": 4,
+          "before": "כן",
+          "after": "true"
+        }
+      ]
+    },
+    "has_elevator:boolean_normalized": {
+      "count": 530,
+      "examples": [
+        {
+          "line": 2,
+          "before": "FALSE",
+          "after": "false"
+        },
+        {
+          "line": 3,
+          "before": "yes",
+          "after": "true"
+        },
+        {
+          "line": 4,
+          "before": "כן",
+          "after": "true"
+        }
+      ]
+    },
+    "has_parking:blank_to_null": {
+      "count": 20,
+      "examples": [
+        {
+          "line": 10,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 37,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 55,
+          "before": "",
+          "after": "null"
+        }
+      ]
+    },
+    "has_parking:boolean_normalized": {
+      "count": 510,
+      "examples": [
+        {
+          "line": 2,
+          "before": "no",
+          "after": "false"
+        },
+        {
+          "line": 3,
+          "before": "1",
+          "after": "true"
+        },
+        {
+          "line": 4,
+          "before": "כן",
+          "after": "true"
+        }
+      ]
+    },
+    "has_safe_room:boolean_normalized": {
+      "count": 530,
+      "examples": [
+        {
+          "line": 2,
+          "before": "no",
+          "after": "false"
+        },
+        {
+          "line": 3,
+          "before": "כן",
+          "after": "true"
+        },
+        {
+          "line": 4,
+          "before": "כן",
+          "after": "true"
+        }
+      ]
+    },
+    "neighborhood:alias_mapped": {
+      "count": 12,
+      "examples": [
+        {
+          "line": 58,
+          "before": "רמב\"ש ג'",
+          "after": "רמת בית שמש ג'"
+        },
+        {
+          "line": 169,
+          "before": "רמב\"ש ג'",
+          "after": "רמת בית שמש ג'"
+        },
+        {
+          "line": 199,
+          "before": "רמב\"ש ג'",
+          "after": "רמת בית שמש ג'"
+        }
+      ]
+    },
+    "neighborhood:blank_to_null": {
+      "count": 11,
+      "examples": [
+        {
+          "line": 173,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 218,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 226,
+          "before": "",
+          "after": "null"
+        }
+      ]
+    },
+    "neighborhood:text_normalized": {
+      "count": 139,
+      "examples": [
+        {
+          "line": 5,
+          "before": "מרכז ",
+          "after": "מרכז"
+        },
+        {
+          "line": 6,
+          "before": "נוף ים ",
+          "after": "נוף ים"
+        },
+        {
+          "line": 9,
+          "before": "רמות רמז ",
+          "after": "רמות רמז"
+        }
+      ]
+    },
+    "price_nis:number_normalized": {
+      "count": 56,
+      "examples": [
+        {
+          "line": 5,
+          "before": "4,331,000",
+          "after": "4331000"
+        },
+        {
+          "line": 6,
+          "before": "4,636,000",
+          "after": "4636000"
+        },
+        {
+          "line": 28,
+          "before": "9,083,000",
+          "after": "9083000"
+        }
+      ]
+    },
+    "price_per_sqm:blank_to_null": {
+      "count": 10,
+      "examples": [
+        {
+          "line": 40,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 48,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 49,
+          "before": "",
+          "after": "null"
+        }
+      ]
+    },
+    "price_per_sqm:invalid_or_zero_to_null": {
+      "count": 2,
+      "examples": [
+        {
+          "line": 80,
+          "before": "0",
+          "after": "null"
+        },
+        {
+          "line": 333,
+          "before": "0",
+          "after": "null"
+        }
+      ]
+    },
+    "property_type:text_normalized": {
+      "count": 12,
+      "examples": [
+        {
+          "line": 50,
+          "before": "דירה  ",
+          "after": "דירה"
+        },
+        {
+          "line": 100,
+          "before": "דירה  ",
+          "after": "דירה"
+        },
+        {
+          "line": 171,
+          "before": "  דירה ",
+          "after": "דירה"
+        }
+      ]
+    },
+    "rooms:number_normalized": {
+      "count": 20,
+      "examples": [
+        {
+          "line": 3,
+          "before": "2 חדרים",
+          "after": "2"
+        },
+        {
+          "line": 36,
+          "before": "4 חדרים",
+          "after": "4"
+        },
+        {
+          "line": 46,
+          "before": "5 חדרים",
+          "after": "5"
+        }
+      ]
+    },
+    "size_sqm:blank_to_null": {
+      "count": 10,
+      "examples": [
+        {
+          "line": 40,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 48,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 49,
+          "before": "",
+          "after": "null"
+        }
+      ]
+    },
+    "street:text_normalized": {
+      "count": 9,
+      "examples": [
+        {
+          "line": 38,
+          "before": "  אלנבי ",
+          "after": "אלנבי"
+        },
+        {
+          "line": 70,
+          "before": "  מבצע קדש ",
+          "after": "מבצע קדש"
+        },
+        {
+          "line": 248,
+          "before": "  אבן גבירול ",
+          "after": "אבן גבירול"
+        }
+      ]
+    },
+    "year_built:blank_to_null": {
+      "count": 35,
+      "examples": [
+        {
+          "line": 15,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 20,
+          "before": "",
+          "after": "null"
+        },
+        {
+          "line": 32,
+          "before": "",
+          "after": "null"
+        }
+      ]
+    }
+  },
+  "assumptions": [
+    "The original CSV is never modified; its SHA-256 is recorded in the report. Output goes to Data/processed/.",
+    "Encoding is auto-detected: BOM (UTF-8/UTF-16) -> strict UTF-8 -> BOM-less UTF-16 -> windows-1255 (accepted only if the result looks like Hebrew). If none fits, the import fails instead of guessing. The detected encoding is stored in the report.",
+    "The header is matched by column NAME (order does not matter). A missing required column aborts the import.",
+    "A row whose field count differs from the header is rejected (never guessed/repaired).",
+    "Rows are REJECTED (written to deals.rejected.json, not to the clean dataset) when: deal_id is missing, city is missing, deal_date is missing/unparseable/in the future/before 1990, or price_nis is missing/unparseable/below 100,000 NIS.",
+    "Slash/dot dates (15/06/2025, 17.07.2026) are DAY-first (Israeli convention). In the sample no value has a month > 12 in the 2nd position while 75 have a day > 12 in the 1st, which supports this.",
+    "Month-only dates (\"Aug 2025\") are kept as 2025-08-01 with deal_date_precision=\"month\" (+ flag deal_date_month_only). deal_year / deal_month are always exact; do not treat the \"01\" as a real day.",
+    "Prices are whole NIS. \"₪\", spaces and thousands commas are stripped. A price of 0 or 18,000 is treated as invalid data, not a real sale.",
+    "City aliases map to one canonical Hebrew name. \"ת\"א\" and \"תל אביב\" -> תל אביב-יפו; \"ב\"ש\" -> באר שבע (NOT בית שמש); \"מודיעין\" -> מודיעין-מכבים-רעות. Unknown cities are kept as-is and flagged unknown_city.",
+    "Neighborhoods are only trimmed/normalized; \"מרכז\" and \"מרכז העיר\" are NOT merged (they may or may not be the same area). Two safe aliases are applied: English \"Florentin\", and the abbreviation רמב\"ש = רמת בית שמש. A trailing Hebrew letter without geresh (\"רמת בית שמש א\") gets one (\"א'\").",
+    "Blank means \"unknown\" -> null. In particular a blank has_parking is null, NOT false.",
+    "Booleans: כן/yes/true/1 -> true; לא/no/false/0 -> false; anything else -> null + flag invalid_boolean.",
+    "rooms: \"4 חדרים\" -> 4. Half rooms are kept. Valid range 1-20, otherwise null + flag.",
+    "size_sqm valid range 10-1000 sqm (else null + flag). Sizes outside 20-300 are kept but flagged size_outlier. size_sqm is assumed to be one consistent measure (we do not know if it is built/registered/net).",
+    "floor 0 = ground floor. A blank floor stays null (24 rows, mostly regular apartments). floor > total_floors is flagged, not fixed.",
+    "year_built blank -> null. year_built later than the deal year is KEPT and flagged year_built_after_deal (could be a pre-sale from a developer, but is contradictory when condition is \"דורש שיפוץ\").",
+    "price_per_sqm is DERIVED as round(price_nis / size_sqm) when both exist. The file's own value is kept as price_per_sqm_reported (0 -> null). If they differ by more than 2% the record is kept and flagged price_per_sqm_mismatch; we do NOT know whether price, size or the reported value is the wrong one.",
+    "Duplicate deal_id: identical rows are collapsed. If rows conflict, we keep (1) the one whose price matches its own price_per_sqm, then (2) the most trusted source (tax authority > owner > broker), then (3) the first line. Every conflict is listed in the report.",
+    "Enumerations get an English code (for filters / LLM schema) next to the original Hebrew label (property_type_he, condition_he, source_he). \"שמור\" (well_kept) and \"במצב טוב\" (good) are kept as separate conditions.",
+    "Text: NFC, invisible/bidi characters and niqqud removed, whitespace collapsed, gershayim/geresh normalised to ASCII \" and '."
+  ]
+}
