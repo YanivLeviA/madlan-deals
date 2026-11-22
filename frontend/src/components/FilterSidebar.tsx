@@ -1,7 +1,7 @@
 import { CUSTOM_DATE, FEATURES, summaries, type FilterState } from '../filters/filterState';
 import type { FilterOptions } from '../filters/options';
 import { FilterGroup } from './FilterGroup';
-import { ChipGroup, RangeField, SelectField, TextField, TriField } from './fields';
+import { ChipGroup, RangeField, SelectField, SelectRangeField, TextField, TriField } from './fields';
 
 interface Props {
   filters: FilterState;
@@ -42,12 +42,15 @@ export function FilterSidebar({ filters, options, metaStatus, busy, onChange, on
 
       <FilterGroup title="מסננים נפוצים" summary={summaries.common(filters)} defaultOpen>
         <SelectField label="עיר" value={filters.city} onChange={set('city')} options={options.cities} anyLabel="כל הערים" />
-        <SelectField
+        <SelectRangeField
           label="חדרים"
-          value={filters.roomsMin}
-          onChange={(roomsMin) => onChange({ ...filters, roomsMin, roomsMax: '' })}
-          options={options.rooms}
-          anyLabel="ללא הגבלה"
+          min={filters.roomsMin}
+          max={filters.roomsMax}
+          onMinChange={set('roomsMin')}
+          onMaxChange={set('roomsMax')}
+          // each side only offers values that keep "from" <= "to"
+          minOptions={options.rooms.filter((o) => !filters.roomsMax || Number(o.value) <= Number(filters.roomsMax))}
+          maxOptions={options.rooms.filter((o) => !filters.roomsMin || Number(o.value) >= Number(filters.roomsMin))}
         />
         <SelectField label="מחיר מרבי" value={filters.priceMax} onChange={set('priceMax')} options={options.prices} anyLabel="ללא הגבלה" />
       </FilterGroup>

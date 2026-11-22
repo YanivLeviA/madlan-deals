@@ -29,17 +29,14 @@ const empty: FilterOptions = { cities: [], rooms: [], prices: [], years: [], pro
 const withCurrent = (options: Option[], value: string, label: string): Option[] =>
   value && !options.some((o) => o.value === value) ? [{ value, label }, ...options] : options;
 
-const roomLabel = (value: string, exact: boolean) => (exact ? `${value} חדרים` : `${value} ומעלה`);
-
 /** Dropdown and chip choices for the sidebar, taken from GET /api/meta. */
 export function buildFilterOptions(meta: DatasetMeta | null, filters: FilterState): FilterOptions {
   if (!meta) return empty;
 
-  const rooms = roomOptions(meta.ranges.rooms).map((o) =>
-    o.value === filters.roomsMin && filters.roomsMin !== '' && filters.roomsMin === filters.roomsMax
-      ? { value: o.value, label: roomLabel(o.value, true) }
-      : o,
-  );
+  // Used by both the "from" and the "to" rooms selects; keeps a value that came from an LLM query even if it is not listed.
+  let rooms = roomOptions(meta.ranges.rooms);
+  for (const current of [filters.roomsMin, filters.roomsMax]) rooms = withCurrent(rooms, current, current);
+  rooms.sort((a, b) => Number(a.value) - Number(b.value));
 
   const years = yearOptions(meta.ranges.deal_date);
   const customDates = !filters.dealYear && (filters.dealDateFrom || filters.dealDateTo);
@@ -53,7 +50,7 @@ export function buildFilterOptions(meta: DatasetMeta | null, filters: FilterStat
       filters.city,
       filters.city,
     ),
-    rooms: withCurrent(rooms, filters.roomsMin, roomLabel(filters.roomsMin, filters.roomsMin === filters.roomsMax)),
+    rooms,
     prices: priceOptions(meta.ranges.price_nis, filters.priceMax),
     years: withCurrent(yearChoices, filters.dealYear, filters.dealYear),
     propertyTypes: codes(meta.property_types, PROPERTY_TYPE_CODES),
@@ -68,7 +65,7 @@ function roomOptions(range: { min: number | null; max: number | null }): Option[
   const options: Option[] = [];
   for (let half = start; half <= end; half++) {
     const value = String(half / 2);
-    options.push({ value, label: roomLabel(value, false) });
+    options.push({ value, label: value });
   }
   return options;
 }

@@ -69,6 +69,37 @@ export function RangeField(props: {
   );
 }
 
+/** "from – to" pair of dropdowns (same look as RangeField, for values picked from a list). */
+export function SelectRangeField(props: {
+  label: string;
+  min: string;
+  max: string;
+  onMinChange: (value: string) => void;
+  onMaxChange: (value: string) => void;
+  minOptions: Option[];
+  maxOptions: Option[];
+}) {
+  const id = useId();
+  const select = (suffix: string, anyLabel: string, value: string, onChange: (v: string) => void, options: Option[]) => (
+    <select id={`${id}-${suffix}`} className="input input--select" aria-label={`${props.label} ${anyLabel}`} value={value} onChange={(e) => onChange(e.target.value)}>
+      <option value="">{anyLabel}</option>
+      {options.map((o) => (
+        <option key={o.value} value={o.value}>
+          {o.label}
+        </option>
+      ))}
+    </select>
+  );
+  return (
+    <Field label={props.label} htmlFor={`${id}-min`}>
+      <div className="range">
+        {select('min', 'מ-', props.min, props.onMinChange, props.minOptions)}
+        {select('max', 'עד', props.max, props.onMaxChange, props.maxOptions)}
+      </div>
+    </Field>
+  );
+}
+
 /** Multi-select as toggle chips. */
 export function ChipGroup<T extends string>(props: {
   legend: string;
